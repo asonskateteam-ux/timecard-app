@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#172554" />
+
+    <title>My Timecard</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <header>
+        <h1>My Timecard</h1>
+        <div id="currentDate"></div>
+      </header>
+
+      <main id="timecardPage" class="page active-page">
+        <section class="template-status-card">
+          <div>
+            <strong>Excel Template</strong>
+            <div id="templateStatus">No template selected</div>
+          </div>
+
+          <button id="selectTemplateButton" class="template-button">
+            Select Template
+          </button>
+
+          <input
+            id="templateFileInput"
+            type="file"
+            accept=".xlsx"
+            hidden
+          />
+        </section>
+
+        <section class="summary">
+          <span>Today's Total</span>
+          <strong id="totalHours">0.00 hrs</strong>
+        </section>
+
+        <button id="addEntryButton" class="primary">
+          + Add Work Entry
+        </button>
+
+        <button id="lunchButton" class="lunch">
+          + Add Lunch
+        </button>
+
+        <section>
+          <h2>Today's Entries</h2>
+          <div id="entries"></div>
+        </section>
+
+        <button id="finishButton" class="finish">
+          Finish Timecard
+        </button>
+      </main>
+
+      <main id="submittedPage" class="page">
+        <section class="submitted-header">
+          <h2>Submitted Timecards</h2>
+          <p>Completed timecards saved on this device.</p>
+        </section>
+
+        <div id="submittedTimecards"></div>
+      </main>
+
+      <nav class="bottom-nav">
+        <button id="timecardTab" class="nav-button active-nav">
+          <span class="nav-icon">🕒</span>
+          <span>Timecard</span>
+        </button>
+
+        <button id="submittedTab" class="nav-button">
+          <span class="nav-icon">📁</span>
+          <span>Submitted</span>
+        </button>
+      </nav>
+
+      <div id="modal" class="modal hidden">
+        <div class="modal-card">
+          <h2>Add Work Entry</h2>
+
+          <label>
+            RO Number
+            <input id="ro" type="text" placeholder="Enter RO number" />
+          </label>
+
+          <label>
+            J/C
+            <input id="jc" type="text" placeholder="eg. 01" />
+          </label>
+
+          <label>
+            Description
+            <textarea
+              id="description"
+              placeholder="Job description"
+            ></textarea>
+          </label>
+
+          <div class="time-row">
+            <label>
+              Start
+              <input id="startTime" type="time" />
+            </label>
+
+            <label>
+              Finish
+              <input id="finishTime" type="time" />
+            </label>
+          </div>
+
+          <div id="calculatedHours" class="calculated">
+            0.00 hrs
+          </div>
+
+          <div class="button-row">
+            <button id="cancelButton" class="secondary">
+              Cancel
+            </button>
+
+            <button id="saveButton" class="primary">
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="lunchModal" class="modal hidden">
+        <div class="modal-card lunch-card">
+          <h2>Add Lunch</h2>
+
+          <p class="lunch-text">
+            How long was your unpaid lunch?
+          </p>
+
+          <div class="lunch-options">
+            <button id="lunch30Button" class="lunch-option">
+              30 Minutes
+            </button>
+
+            <button id="lunch60Button" class="lunch-option">
+              1 Hour
+            </button>
+          </div>
+
+          <button id="cancelLunchButton" class="secondary full-width">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
